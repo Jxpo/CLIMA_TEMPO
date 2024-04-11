@@ -1,14 +1,17 @@
+/* Define estilos gerais para redefinir o padding e margin de todos os elementos */
 * {
     padding: 0;
     margin: 0;
 }
 
+/* Define variáveis de cor de fundo para o root */
 :root {
     background-image: url(./img/fundo_principal.png);
     background-size: cover;
     background-repeat: no-repeat;
 }
 
+/* Estilos gerais para o body */
 body {
     width: 100vw;
     height: 100vh;
@@ -17,6 +20,7 @@ body {
     display: flex;
 }
 
+/* Estilos para a seção de conteúdo */
 .conteudo {
     background: rgb(255, 255, 248);
     margin: auto;
@@ -31,7 +35,7 @@ body {
     justify-content: space-evenly;
 }
 
-
+/* Estilos para a caixa de busca */
 .search-box {
     display: flex;
     width: 90vw;
@@ -42,7 +46,7 @@ body {
     flex-wrap: nowrap;
 }
 
-
+/* Estilos para o campo de texto de busca */
 #search-txt {
     border: 1px solid #000000;
     border-radius: 5px;
@@ -56,26 +60,28 @@ body {
     text-align: center;
 }
 
+/* Estilos para a imagem do ícone de localização */
 #local {
     width: 100px;
-
 }
 
+/* Estilos para a imagem do ícone de pesquisa */
 #search-icon {
     width: 100px;
 }
 
-
+/* Estilos para a imagem do ícone de mundo */
 #mundo {
     width: 400px;
 }
 
+/* Estilos para os ícones de vento e umidade */
 .iconvento,
 .iconumidade {
     width: 170px;
 }
 
-
+/* Estilos gerais para a seção de resultados do clima */
 .geral {
     transform: translate(-50%, -50%);
     display: flex;
@@ -88,31 +94,37 @@ body {
     margin-left: 50%;
 }
 
+/* Estilos para os cartões de temperatura */
 .card-temp {
     margin: 0 10%;
     text-align: center;
 }
 
+/* Estilos para o ícone de clima */
 #clima-icon {
     width: 50vh;
 }
 
+/* Estilos para a seção de resultados do clima */
 #climaResult {
     display: flex;
     text-align: center;
 }
 
+/* Estilos para a temperatura */
 .temperatura {
     text-align: center;
     font-family: 'Shrikhand', cursive;
     font-size: 130%;
 }
 
+/* Estilos para as fontes de vento e umidade */
 #velocidade_vento,
 #umidade_fonte {
     font-size: medium;
 }
 
+/* Estilos para o loader */
 #loader {
     display: none;
     position: fixed;
@@ -126,303 +138,37 @@ body {
     z-index: 999;
 }
 
+/* Estilos para a imagem do loader */
 #loader img {
     width: 600px;
     animation: spin 3s linear infinite;
     animation-delay: 1s;
 }
 
-
-/* /////////////////////////////////////////////////// */
+/* Media queries para estilos responsivos */
 
 @media (max-width: 1200px) {
-    * {
-        padding: 0;
-        margin: 0;
-    }
-
-    :root {
-        background-image: url(./img/fundo_principal.png);
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-
-    body {
-        width: 100vw;
-        height: 100vh;
-        font-family: 'Inter', sans-serif;
-        font-size: x-large;
-        display: flex;
-    }
-
-    .conteudo {
-        background: rgb(255, 255, 248);
-        margin: auto;
-        width: 90%;
-        height: 80%;
-        border-radius: 35px;
-        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        align-items: center;
-        justify-content: space-evenly;
-    }
-
-
-    .search-box {
-        display: flex;
-        width: 90vw;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: nowrap;
-    }
-
-
-    #search-txt {
-        border: 1px solid #000000;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        font-family: "Inter", sans-serif;
-        color: rgb(0, 0, 0);
-        font-size: x-large;
-        border-radius: 40px;
-        width: 50vw;
-        height: 7vh;
-        text-align: center;
-    }
-
-    #local {
-        width: 100px;
-
-    }
-
-    #search-icon {
-        width: 100px;
-    }
-
-
-    #mundo {
-        width: 50vh;
-    }
-
-    .iconvento,
-    .iconumidade {
-        width: 12vw;
-    }
-
-
-    .geral {
-        transform: translate(-50%, -50%);
-        display: flex;
-        justify-content: center;
-        align-items: baseline;
-        width: 20%;
-        flex-direction: row-reverse;
-        align-content: stretch;
-        flex-wrap: nowrap;
-        margin-left: 50%;
-        margin-top: 4vh;
-    }
-
-    .card-temp {
-        margin: 0 8%;
-        text-align: center;
-    }
-
-    #clima-icon {
-        width: 35vw;
-    }
-
-    #climaResult {
-        display: flex;
-        text-align: center;
-    }
-
-    .temperatura {
-        text-align: center;
-        font-family: 'Shrikhand', cursive;
-        font-size: 130%;
-    }
-
-    #velocidade_vento,
-    #umidade_fonte {
-        font-size: medium;
-    }
-
-    #loader {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(255, 255, 255, 0.8);
-        justify-content: center;
-        align-items: center;
-        z-index: 999;
-    }
-
-    #loader img {
-        width: 600px;
-        animation: spin 3s linear infinite;
-        animation-delay: 1s;
-    }
+    /* Estilos gerais para telas com largura máxima de 1200px */
 }
-
-/* /////////////////////////////////////////////////// */
-
-
 
 @media (max-width: 423px) {
-    * {
-        padding: 0;
-        margin: 0;
-    }
-
-    :root {
-        background: url(./img/fundo_principal.png) no-repeat center center fixed;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-    }
-
-    body {
-        justify-content: center;
-    }
-
-    .conteudo {
-        background: rgb(255, 255, 248);
-        width: 90vw;
-        height: 80vh;
-        border-radius: 35px;
-        box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        justify-content: space-evenly;
-        margin-top: 10vh;
-    }
-
-
-    .search-box {
-        display: flex;
-        width: 80vw;
-        padding: 0px;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        align-items: flex-start;
-        flex-wrap: nowrap;
-    }
-
-
-    #search-txt {
-        border: 1px solid #000000;
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        font-family: "Inter", sans-serif;
-        color: rgb(0, 0, 0);
-        font-size: x-large;
-        border-radius: 40px;
-        width: 55vw;
-        height: 7vh;
-    }
-
-    #local {
-        width: 100px;
-    }
-
-    #search-icon {
-        width: 100px;
-    }
-
-
-    #mundo {
-        width: 400vh;
-    }
-
-    .iconvento,
-    .iconumidade {
-        width: 170px;
-    }
-
-
-    .geral {
-        transform: translate(-50%, -50%);
-        display: flex;
-        justify-content: center;
-        align-items: baseline;
-        width: 80%;
-        flex-direction: row-reverse;
-        align-content: stretch;
-        flex-wrap: nowrap;
-    }
-
-    .card-temp {
-        margin: 0 10%;
-        text-align: center;
-    }
-
-    #clima-icon {
-        width: 32vh;
-
-    }
-
-    #climaResult {
-        display: flex;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .temperatura {
-        text-align: center;
-        font-family: 'Shrikhand', cursive;
-        font-size: 130%;
-    }
-
-    #velocidade_vento,
-    #umidade_fonte {
-        font-size: medium;
-    }
-
-    #loader {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(255, 255, 255, 0.8);
-        justify-content: center;
-        align-items: center;
-        z-index: 999;
-    }
-
-    #loader img {
-        width: 600px;
-        animation: spin 3s linear infinite;
-        animation-delay: 1s;
-    }
+    /* Estilos gerais para telas com largura máxima de 423px */
 }
 
-/* /////////////////////////////////////// */
-
 @media (max-width: 1024px) {
-    #clima-icon{
+    /* Estilos gerais para telas com largura máxima de 1024px */
+    #clima-icon {
         width: 35vh;
     }
 
-    .geral{
+    .geral {
         transform: translate(-50%, -50%);
         display: flex;
         justify-content: center;
         align-items: baseline;
         width: 80%;
-        flex-direction: row-rever   se;
+        flex-direction: row-reverse;
         align-content: stretch;
         flex-wrap: nowrap;
     }
-}   
+}
