@@ -2,44 +2,58 @@
 <html lang="pt-br">
 
 <head>
+  <!-- Definindo a codificação de caracteres -->
   <meta charset="UTF-8" />
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+  <!-- Definindo o título da página -->
   <title>Consulta do Clima</title>
+  <!-- Ligando o arquivo de estilo externo -->
   <link rel="stylesheet" href="style.css" />
+  <!-- Pré-conectando ao serviço de fontes Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Importando as fontes necessárias -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Shrikhand&display=swap"
     rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet" />
-
 </head>
 
 <body>
+  <!-- Elemento de carregamento -->
   <div id="loader">
+    <!-- Ícone de carregamento -->
     <img src="./img/carregando.gif" alt="Loading..." />
   </div>
 
+  <!-- Conteúdo principal -->
   <div class="conteudo">
+    <!-- Formulário de consulta do clima -->
     <form class="formClima">
+      <!-- Campo de busca -->
       <div class="search-box">
+        <!-- Ícone de localização -->
         <img src="./img/Local.png" alt="local" id="local" />
+        <!-- Campo de entrada de texto -->
         <input class="search-txt" type="text" name="search-txt" id="search-txt" placeholder="ESCREVA UMA CIDADE AQUI" />
+        <!-- Ícone de pesquisa -->
         <a class="search-icon" href="#">
           <img src="./img/pesquisa.png" alt="Botão" id="search-icon" />
         </a>
       </div>
     </form>
+    <!-- Resultado da consulta do clima -->
     <div id="climaResult">
+      <!-- Ícone de mundo -->
       <img src="./img/Mundo.png" alt="mundo" id="mundo" />
     </div>
 
   </div>
 
+  <!-- Script para interação com a API do clima -->
   <script>
+    // Selecionando o elemento de carregamento
     const loader = document.getElementById("loader");
 
+    // Adicionando evento de tecla pressionada no campo de busca
     document.getElementById("search-txt").addEventListener("keydown", function (event) {
       if (event.key === "Enter") {
         event.preventDefault();
@@ -47,26 +61,32 @@
       }
     });
 
+    // Adicionando evento de clique no ícone de pesquisa
     document.querySelector(".search-icon").addEventListener("click", async (event) => {
       event.preventDefault();
       loader.style.display = "flex";
 
-
+      // Selecionando elementos relevantes
       const searchBox = document.querySelector(".search-box");
       const cityInput = document.getElementById("search-txt").value;
 
       try {
+        // Requisição para obter dados meteorológicos da cidade
         const response = await fetch(`http://localhost:3000/climatempo/${cityInput}`);
         const data = await response.json();
 
+        // Exibindo o resultado do clima
         document.getElementById("climaResult").style.display = "block";
 
+        // Extraindo dados do clima
         const tempoResult = document.getElementById("climaResult");
         const climaLowerCase = data.Clima.toLowerCase();
 
+        // Variáveis para determinar a imagem e o fundo climático
         let imagemSrc;
         let fundoClimatico;
 
+        // Escolhendo a imagem de acordo com o clima
         if (climaLowerCase === "poucas nuvens") {
           imagemSrc = "./img/poucas_nuvens.png";
         } else if (climaLowerCase === "nuvens dispersas") {
@@ -95,6 +115,7 @@
           console.log("error");
         }
 
+        // Determinando o fundo climático
         if (climaLowerCase.includes("chuva") || climaLowerCase.includes("chuva moderada") || climaLowerCase.includes("chuva rapida") || climaLowerCase.includes("chuva leve") || climaLowerCase.includes("chuvisco intenso") || climaLowerCase.includes("tempestade")) {
           fundoClimatico = "Escuro";
         } else if (climaLowerCase.includes("neve") || climaLowerCase.includes("nevoa") || climaLowerCase.includes("nuvens cheias")) {
@@ -103,12 +124,14 @@
           fundoClimatico = "Quente";
         }
 
+        // Mudando o fundo da página de acordo com o clima
         if (fundoClimatico === "Escuro") {
           document.documentElement.style.backgroundImage = `url(./img/fundo_escuro.png)`;
         } else {
           document.documentElement.style.backgroundImage = `url(./img/fundo_frio.png)`;
         }
 
+        // Exibindo os dados meteorológicos
         if (data.Temperatura) {
           tempoResult.innerHTML = `
           <img src="${imagemSrc}" alt="Clima" id="clima-icon">
